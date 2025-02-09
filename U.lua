@@ -1,9 +1,3 @@
---[[
-Octohook ui lib informant version
-Developed by liam#4567
-Edited by xz#1111
-]]
-
 -- // Load
 
 local startupArgs = ({...})[1] or {}
@@ -38,7 +32,9 @@ local executor = (
 local library = {
     windows = {};
     indicators = {};
-    flags = {};
+    flags = {
+        ["watermark_enabled"] = true
+    };
     options = {};
     connections = {};
     drawings = {};
@@ -79,7 +75,7 @@ library.themes = {
     {
         name = 'Default',
         theme = {
-            ["Accent"]                    = fromrgb(204, 45, 45);
+            ["Accent"]                    = fromrgb(255,255,255);
             ["Background"]                = fromrgb(18,18,18);
             ["Border"]                    = fromrgb(0,0,0);
             ["Border 1"]                  = fromrgb(60,60,60);
@@ -98,110 +94,6 @@ library.themes = {
             ["Option Border 1"]           = fromrgb(50,50,50);
             ["Option Border 2"]           = fromrgb(0,0,0);
             ["Option Background"]         = fromrgb(23,23,23);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Informant_V1',
-        theme = {
-            ['Accent']                    = fromrgb(103,89,179);
-            ['Background']                = fromrgb(22,22,31);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(50,50,50);
-            ['Border 2']                  = fromrgb(24,25,37);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(24,25,37);
-            ['Selected Tab Background']   = fromrgb(24,25,37);
-            ['Unselected Tab Background'] = fromrgb(22,22,31);
-            ['Selected Tab Text']         = fromrgb(245,245,245);
-            ['Unselected Tab Text']       = fromrgb(145,145,145);
-            ['Section Background']        = fromrgb(22,22,31);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(50,50,50);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(24,25,37);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Fatality',
-        theme = {
-            ['Accent']                    = fromrgb(197,7,83);
-            ['Background']                = fromrgb(25,19,53);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(60,53,93);
-            ['Border 2']                  = fromrgb(29,23,66);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(29,23,66);
-            ['Selected Tab Background']   = fromrgb(29,23,66);
-            ['Unselected Tab Background'] = fromrgb(25,19,53);
-            ['Selected Tab Text']         = fromrgb(245,245,245);
-            ['Unselected Tab Text']       = fromrgb(145,145,145);
-            ['Section Background']        = fromrgb(25,19,53);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(60,53,93);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(29,23,66);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Gamesense',
-        theme = {
-            ['Accent']                    = fromrgb(147,184,26);
-            ['Background']                = fromrgb(17,17,17);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(47,47,47);
-            ['Border 2']                  = fromrgb(17,17,17);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(17,17,17);
-            ['Selected Tab Background']   = fromrgb(17,17,17);
-            ['Unselected Tab Background'] = fromrgb(17,17,17);
-            ['Selected Tab Text']         = fromrgb(245,245,245);
-            ['Unselected Tab Text']       = fromrgb(145,145,145);
-            ['Section Background']        = fromrgb(17,17,17);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(47,47,47);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(35,35,35);
-            ["Risky Text"]                = fromrgb(175, 21, 21);
-            ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
-        }
-    },
-    {
-        name = 'Twitch',
-        theme = {
-            ['Accent']                    = fromrgb(169,112,255);
-            ['Background']                = fromrgb(14,14,14);
-            ['Border']                    = fromrgb(0,0,0);
-            ['Border 1']                  = fromrgb(45,45,45);
-            ['Border 2']                  = fromrgb(31,31,35);
-            ['Border 3']                  = fromrgb(10,10,10);
-            ['Primary Text']              = fromrgb(235,235,235);
-            ['Group Background']          = fromrgb(31,31,35);
-            ['Selected Tab Background']   = fromrgb(31,31,35);
-            ['Unselected Tab Background'] = fromrgb(17,17,17);
-            ['Selected Tab Text']         = fromrgb(225,225,225);
-            ['Unselected Tab Text']       = fromrgb(160,170,175);
-            ['Section Background']        = fromrgb(17,17,17);
-            ['Option Text 1']             = fromrgb(245,245,245);
-            ['Option Text 2']             = fromrgb(195,195,195);
-            ['Option Text 3']             = fromrgb(145,145,145);
-            ['Option Border 1']           = fromrgb(45,45,45);
-            ['Option Border 2']           = fromrgb(0,0,0);
-            ['Option Background']         = fromrgb(24,24,27);
             ["Risky Text"]                = fromrgb(175, 21, 21);
             ["Risky Text Enabled"]        = fromrgb(255, 41, 41);
         }
@@ -4490,7 +4382,7 @@ function library:init()
         self.watermark = {
             objects = {};
             text = {
-                {"informant.wtf", true},
+                {"snipey.cc", true},
                 {"V"..getgenv().Config.Version, true},
                 {getgenv().luaguardvars.DiscordName, true},
                 {'0 fps', true},
@@ -4498,10 +4390,11 @@ function library:init()
             };
             lock = 'custom';
             position = newUDim2(0,0,0,0);
-            refreshrate = 25;
+            refreshrate = 30;
         }
 
         function self.watermark:Update()
+
             self.objects.background.Visible = library.flags.watermark_enabled
             if library.flags.watermark_enabled then
                 local date = {os.date('%b',os.time()), os.date('%d',os.time()), os.date('%Y',os.time())}
@@ -4609,7 +4502,7 @@ function library:init()
     self.targetDistance = self.targetIndicator:AddValue({key = 'Distance :', value = '0m'})
     self.targetTool = self.targetIndicator:AddValue({key = 'Weapon   :', value = 'nil'})
 
-    self:SetTheme(library.theme);
+    self:SetTheme(library.theme["Default"]);
     self:SetOpen(true);
     self.hasInit = true
 
@@ -4618,14 +4511,16 @@ end
 function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('Settings', 999);
     local configSection = settingsTab:AddSection('Config', 2);
+    local statsSection = settingsTab:AddSection('Stats', 1);
     local mainSection = settingsTab:AddSection('Main', 1);
     local creditsSection = settingsTab:AddSection('Credits', 2);
-    creditsSection:AddSeparator({text = 'Owners/Developers'});
-    creditsSection:AddText({text = "xz#1111"})
-    creditsSection:AddText({text = "goof#1000"})
-    creditsSection:AddSeparator({text = 'Helpers'});
-    creditsSection:AddText({text = "encode#9999"})
-    creditsSection:AddText({text = "Vault#5434"})
+    creditsSection:AddSeparator({text = 'Owner'});
+    creditsSection:AddText({text = "m4pty"})
+    creditsSection:AddText({text = "snipey.cc"})
+    creditsSection:AddText({text = "discord.gg/snipey"})
+    statsSection:AddSeparator({text = 'Information'});
+    statsSection:AddText({text = "Expirey - 324234234"})
+    statsSection:AddText({text = "Other stuff - 324234234"})
 
 
     configSection:AddBox({text = 'Config Name', flag = 'configinput'})
@@ -4685,7 +4580,7 @@ function library:CreateSettingsTab(menu)
     end})
 
     mainSection:AddButton({text = 'Join Discord', flag = 'joindiscord', confirm = true, callback = function()
-        local res = syn.request({
+        local res = request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
             Headers = {
@@ -4695,13 +4590,13 @@ function library:CreateSettingsTab(menu)
             Body = game:GetService('HttpService'):JSONEncode({
                 cmd = 'INVITE_BROWSER',
                 nonce = game:GetService('HttpService'):GenerateGUID(false),
-                args = {code = getgenv().Config.Invite}
+                args = {code = "snipey"}
             })
         })
     end})
     
     mainSection:AddButton({text = 'Copy Discord', flag = 'copydiscord', callback = function()
-        setclipboard('https://discord.gg/'..getgenv().Config.Invite)
+        setclipboard('https://discord.gg/snipey')
     end})
 
     mainSection:AddButton({text = 'Rejoin Server', confirm = true, callback = function()
@@ -4716,6 +4611,7 @@ function library:CreateSettingsTab(menu)
         library:Unload();
     end})
 
+    --[[
     mainSection:AddSeparator({text = 'Keybinds'});
     mainSection:AddToggle({text = 'Keybind Indicator', flag = 'keybind_indicator', callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
@@ -4726,7 +4622,8 @@ function library:CreateSettingsTab(menu)
     mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = .1, value = 35, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
-
+    --]]
+    
     mainSection:AddSeparator({text = 'Watermark'})
     mainSection:AddToggle({text = 'Enabled', flag = 'watermark_enabled'});
     mainSection:AddList({text = 'Position', flag = 'watermark_pos', selected = 'Custom', values = {'Top', 'Top Left', 'Top Right', 'Bottom Left', 'Bottom Right', 'Custom'}, callback = function(val)
@@ -4742,6 +4639,7 @@ function library:CreateSettingsTab(menu)
     local themeSection = settingsTab:AddSection('Theme', 1);
     local setByPreset = false
 
+    --[[
     themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
         setByPreset = true
         for _,v in next, library.themes do
@@ -4757,6 +4655,7 @@ function library:CreateSettingsTab(menu)
         end
         setByPreset = false
     end}):Select('Default');
+    --]]
 
     return settingsTab;
 end

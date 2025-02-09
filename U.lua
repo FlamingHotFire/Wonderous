@@ -4507,13 +4507,15 @@ end
 
 function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('Settings', 999);
-    local configSection = settingsTab:AddSection('Config', 2);
-    local mainSection = settingsTab:AddSection('Main', 1);
-    local statsSection = settingsTab:AddSection('Stats', 2);
     local creditsSection = settingsTab:AddSection('Credits', 2);
-    creditsSection:AddSeparator({text = 'Owner'});
-    creditsSection:AddText({text = "m4pty"})
-    creditsSection:AddText({text = "snipey.cc"})
+    local configSection = settingsTab:AddSection('Config', 2);
+    local statsSection = settingsTab:AddSection('Stats', 1);
+    local mainSection = settingsTab:AddSection('Main', 1);
+    creditsSection:AddSeparator({text = 'snipey.cc'});
+    creditsSection:AddText({text = ""})
+    creditsSection:AddSeparator({text = 'This project'});
+    creditsSection:AddSeparator({text = 'Is owned by'});
+    creditsSection:AddSeparator({text = 'MAP'});
     statsSection:AddSeparator({text = 'Information'});
     statsSection:AddText({text = "Expirey - 324234234"})
     statsSection:AddText({text = "Other stuff - 324234234"})

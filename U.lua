@@ -4629,7 +4629,7 @@ function library:CreateSettingsTab(menu)
     mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', value = 6.1, min = 0, max = 100, increment = .1});
     mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', value = 1.2, min = 0, max = 100, increment = .1});
 
-    library:SetTheme("Default")
+    library:SetTheme(library.themes[1].theme)
 
     --[[
     local themeStrings = {};

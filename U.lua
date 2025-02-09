@@ -4502,7 +4502,7 @@ function library:init()
     self.targetDistance = self.targetIndicator:AddValue({key = 'Distance :', value = '0m'})
     self.targetTool = self.targetIndicator:AddValue({key = 'Weapon   :', value = 'nil'})
 
-    self:SetTheme(library.theme);
+    self:SetTheme(library.theme["Default"]);
     self:SetOpen(true);
     self.hasInit = true
 

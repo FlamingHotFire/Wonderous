@@ -32,9 +32,7 @@ local executor = (
 local library = {
     windows = {};
     indicators = {};
-    flags = {
-        ["watermark_enabled"] = true
-    };
+    flags = {};
     options = {};
     connections = {};
     drawings = {};
@@ -4394,7 +4392,6 @@ function library:init()
         }
 
         function self.watermark:Update()
-
             self.objects.background.Visible = library.flags.watermark_enabled
             if library.flags.watermark_enabled then
                 local date = {os.date('%b',os.time()), os.date('%d',os.time()), os.date('%Y',os.time())}

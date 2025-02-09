@@ -2239,7 +2239,7 @@ function library:init()
                             end
                             bind.callback(true)
                             local display = bind.state; if bind.invertindicator then display = not bind.state; end
-                            bind.indicatorValue:SetEnabled(display and not bind.noindicator);
+                            --bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             bind.indicatorValue:SetKey((bind.text == nil or bind.text == '') and (bind.flag == nil and 'unknown' or bind.flag) or bind.text); -- this is so dumb
                             bind.indicatorValue:SetValue('[Always]');
                         end
@@ -2301,7 +2301,7 @@ function library:init()
                                 end
                                 self.callback(true)
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
-                                bind.indicatorValue:SetEnabled(display and not bind.noindicator);
+                                --bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             else
                                 keyName = keyNames[keybind] or keybind.Name or keybind
                             end
@@ -2312,7 +2312,7 @@ function library:init()
                                 end
                                 self.callback(false)
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
-                                bind.indicatorValue:SetEnabled(display and not bind.noindicator);
+                                --bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             end
                             self.keycallback(self.bind);
                             self:SetKeyText(keyName:upper());
@@ -2343,7 +2343,7 @@ function library:init()
                                 bind.state = true
                                 library.flags[bind.flag] = bind.state
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
-                                bind.indicatorValue:SetEnabled(display and not bind.noindicator)
+                                --bind.indicatorValue:SetEnabled(display and not bind.noindicator)
                             elseif (inp.KeyCode == bind.bind or inp.UserInputType == bind.bind) and not bind.binding then
                                 if bind.mode == 'toggle' then
                                     bind.state = not bind.state
@@ -2352,12 +2352,12 @@ function library:init()
                                     end
                                     bind.callback(bind.state)
                                     local display = bind.state; if bind.invertindicator then display = not bind.state; end
-                                    bind.indicatorValue:SetEnabled(display and not bind.noindicator);
+                                    --bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                                 elseif bind.mode == 'hold' then
                                     if bind.flag then
                                         library.flags[bind.flag] = true;
                                     end
-                                    bind.indicatorValue:SetEnabled((not bind.invertindicator and true or false) and not bind.noindicator);
+                                    --bind.indicatorValue:SetEnabled((not bind.invertindicator and true or false) and not bind.noindicator);
                                     c = utility:Connection(runservice.RenderStepped, function()
                                         if bind.callback then
                                             bind.callback(true);
@@ -2378,7 +2378,7 @@ function library:init()
                                         if bind.callback then
                                             bind.callback(false);
                                         end
-                                        bind.indicatorValue:SetEnabled(bind.invertindicator and true or false);
+                                        --bind.indicatorValue:SetEnabled(bind.invertindicator and true or false);
                                     end
                                 end
                             end

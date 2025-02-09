@@ -4481,7 +4481,6 @@ function library:init()
     
     -- Watermark
     do
-        local size = self.objects.background.Object.Size;
         local screensize = workspace.CurrentCamera.ViewportSize;
         self.watermark = {
             objects = {};
@@ -4493,7 +4492,7 @@ function library:init()
                 {'0ms', true},
             };
             lock = 'custom';
-            position = newUDim2(0, screensize.X / 2 - size.X / 2, 0, 15) or
+            position = newUDim2(0, screensize.X / 2 - self.objects.background.Object.Size.X / 2, 0, 15) or
             newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0);
             refreshrate = 30;
         }

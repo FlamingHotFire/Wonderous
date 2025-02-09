@@ -4632,6 +4632,7 @@ function library:CreateSettingsTab(menu)
     mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', value = 6.1, min = 0, max = 100, increment = .1});
     mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', value = 1.2, min = 0, max = 100, increment = .1});
 
+    --[[
     local themeStrings = {};
     for _,v in next, library.themes do
         table.insert(themeStrings, v.name)
@@ -4639,7 +4640,7 @@ function library:CreateSettingsTab(menu)
     local themeSection = settingsTab:AddSection('Theme', 1);
     local setByPreset = false
 
-    --[[
+
     themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
         setByPreset = true
         for _,v in next, library.themes do

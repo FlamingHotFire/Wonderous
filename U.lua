@@ -32,7 +32,9 @@ local executor = (
 local library = {
     windows = {};
     indicators = {};
-    flags = {};
+    flags = {
+        ["watermark_enabled"] = true
+    };
     options = {};
     connections = {};
     drawings = {};
@@ -4481,7 +4483,6 @@ function library:init()
     
     -- Watermark
     do
-        local screensize = workspace.CurrentCamera.ViewportSize;
         self.watermark = {
             objects = {};
             text = {
@@ -4492,12 +4493,12 @@ function library:init()
                 {'0ms', true},
             };
             lock = 'custom';
-            position = newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0);
+            position = newUDim2(0,0,0,0);
             refreshrate = 30;
         }
 
         function self.watermark:Update()
-            library.flags.watermark_enabled = true
+
             self.objects.background.Visible = library.flags.watermark_enabled
             if library.flags.watermark_enabled then
                 local date = {os.date('%b',os.time()), os.date('%d',os.time()), os.date('%Y',os.time())}
@@ -4596,7 +4597,7 @@ function library:init()
         end
     end)
 
-    --self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = false});
+    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = false});
     
     self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = false});
     self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
@@ -4726,7 +4727,7 @@ function library:CreateSettingsTab(menu)
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
     --]]
-
+    
     mainSection:AddSeparator({text = 'Watermark'})
     mainSection:AddToggle({text = 'Enabled', flag = 'watermark_enabled'});
     mainSection:AddList({text = 'Position', flag = 'watermark_pos', selected = 'Custom', values = {'Top', 'Top Left', 'Top Right', 'Bottom Left', 'Bottom Right', 'Custom'}, callback = function(val)

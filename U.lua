@@ -4499,7 +4499,7 @@ function library:init()
     self.targetDistance = self.targetIndicator:AddValue({key = 'Distance :', value = '0m'})
     self.targetTool = self.targetIndicator:AddValue({key = 'Weapon   :', value = 'nil'})
 
-    self:SetTheme(library.theme["Default"]);
+    self:SetTheme(library.theme);
     self:SetOpen(true);
     self.hasInit = true
 
@@ -4628,6 +4628,8 @@ function library:CreateSettingsTab(menu)
     end})
     mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', value = 6.1, min = 0, max = 100, increment = .1});
     mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', value = 1.2, min = 0, max = 100, increment = .1});
+
+    library:SetTheme("Default")
 
     --[[
     local themeStrings = {};

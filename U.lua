@@ -4481,6 +4481,8 @@ function library:init()
     
     -- Watermark
     do
+        local size = self.objects.background.Object.Size;
+        local screensize = workspace.CurrentCamera.ViewportSize;
         self.watermark = {
             objects = {};
             text = {
@@ -4491,11 +4493,13 @@ function library:init()
                 {'0ms', true},
             };
             lock = 'custom';
-            position = newUDim2(0,0,0,0);
+            position = newUDim2(0, screensize.X / 2 - size.X / 2, 0, 15) or
+            newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0);
             refreshrate = 30;
         }
 
         function self.watermark:Update()
+            library.flags.watermark_enabled = true
             self.objects.background.Visible = library.flags.watermark_enabled
             if library.flags.watermark_enabled then
                 local date = {os.date('%b',os.time()), os.date('%d',os.time()), os.date('%Y',os.time())}
@@ -4712,6 +4716,7 @@ function library:CreateSettingsTab(menu)
         library:Unload();
     end})
 
+    --[[
     mainSection:AddSeparator({text = 'Keybinds'});
     mainSection:AddToggle({text = 'Keybind Indicator', flag = 'keybind_indicator', callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
@@ -4722,6 +4727,7 @@ function library:CreateSettingsTab(menu)
     mainSection:AddSlider({text = 'Position Y', flag = 'keybind_indicator_y', min = 0, max = 100, increment = .1, value = 35, callback = function()
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
+    --]]
 
     mainSection:AddSeparator({text = 'Watermark'})
     mainSection:AddToggle({text = 'Enabled', flag = 'watermark_enabled'});

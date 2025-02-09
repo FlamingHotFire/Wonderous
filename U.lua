@@ -534,7 +534,7 @@ function library:init()
 
 
     local screenGui = Instance.new('ScreenGui');
-    if syn then syn.protect_gui(screenGui); end
+    if protect_gui then protect_gui(screenGui); end
     screenGui.Parent = game:GetService('CoreGui');
     screenGui.Enabled = true;
     utility:Instance('ImageButton', {
@@ -4601,15 +4601,11 @@ function library:CreateSettingsTab(menu)
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId);
     end})
 
-    mainSection:AddButton({text = 'Copy Join Script', callback = function()
-        setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId))
-    end})
-
     mainSection:AddButton({text = 'Unload', confirm = true, callback = function()
         library:Unload();
     end})
 
-    --[[
+    ----[[
     mainSection:AddSeparator({text = 'Keybinds'});
     mainSection:AddToggle({text = 'Keybind Indicator', flag = 'keybind_indicator', callback = function(bool)
         library.keyIndicator:SetEnabled(bool);
@@ -4636,32 +4632,6 @@ function library:CreateSettingsTab(menu)
     library.flags.watermark_enabled = true
     library.watermark.lock = "Top"
     library:SetTheme(library.themes[1].theme)
-
-    --[[
-    local themeStrings = {};
-    for _,v in next, library.themes do
-        table.insert(themeStrings, v.name)
-    end
-    local themeSection = settingsTab:AddSection('Theme', 1);
-    local setByPreset = false
-
-
-    themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStrings, callback = function(newTheme)
-        setByPreset = true
-        for _,v in next, library.themes do
-            if v.name == newTheme then
-                for x, d in pairs(library.options) do
-                    if v.theme[tostring(x)] ~= nil then
-                        d:SetColor(v.theme[tostring(x)])
-                    end
-                end
-                library:SetTheme(v.theme)
-                break
-            end
-        end
-        setByPreset = false
-    end}):Select('Default');
-    --]]
 
     return settingsTab;
 end

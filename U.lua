@@ -1,3 +1,9 @@
+--[[
+Octohook ui lib informant version
+Developed by liam#4567
+Edited by xz#1111
+]]
+
 -- // Load
 
 local startupArgs = ({...})[1] or {}
@@ -73,7 +79,7 @@ library.themes = {
     {
         name = 'Default',
         theme = {
-            ["Accent"]                    = fromrgb(255,255,255);
+            ["Accent"]                    = fromrgb(204, 45, 45);
             ["Background"]                = fromrgb(18,18,18);
             ["Border"]                    = fromrgb(0,0,0);
             ["Border 1"]                  = fromrgb(60,60,60);
@@ -97,7 +103,7 @@ library.themes = {
         }
     },
     {
-        name = 'snipey_V1',
+        name = 'Informant_V1',
         theme = {
             ['Accent']                    = fromrgb(103,89,179);
             ['Background']                = fromrgb(22,22,31);
@@ -4484,7 +4490,7 @@ function library:init()
         self.watermark = {
             objects = {};
             text = {
-                {"snipey.cc", true},
+                {"informant.wtf", true},
                 {"V"..getgenv().Config.Version, true},
                 {getgenv().luaguardvars.DiscordName, true},
                 {'0 fps', true},
@@ -4492,7 +4498,7 @@ function library:init()
             };
             lock = 'custom';
             position = newUDim2(0,0,0,0);
-            refreshrate = 30;
+            refreshrate = 25;
         }
 
         function self.watermark:Update()
@@ -4612,16 +4618,14 @@ end
 function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('Settings', 999);
     local configSection = settingsTab:AddSection('Config', 2);
-    local statsSection = settingsTab:AddSection('Stats', 1);
     local mainSection = settingsTab:AddSection('Main', 1);
     local creditsSection = settingsTab:AddSection('Credits', 2);
-    creditsSection:AddSeparator({text = 'Owner'});
-    creditsSection:AddText({text = "m4pty"})
-    creditsSection:AddText({text = "snipey.cc"})
-    creditsSection:AddText({text = "discord.gg/snipey"})
-    statsSection:AddSeparator({text = 'Information'});
-    statsSection:AddText({text = "Expirey - 324234234"})
-    statsSection:AddText({text = "Other stuff - 324234234"})
+    creditsSection:AddSeparator({text = 'Owners/Developers'});
+    creditsSection:AddText({text = "xz#1111"})
+    creditsSection:AddText({text = "goof#1000"})
+    creditsSection:AddSeparator({text = 'Helpers'});
+    creditsSection:AddText({text = "encode#9999"})
+    creditsSection:AddText({text = "Vault#5434"})
 
 
     configSection:AddBox({text = 'Config Name', flag = 'configinput'})
@@ -4681,7 +4685,7 @@ function library:CreateSettingsTab(menu)
     end})
 
     mainSection:AddButton({text = 'Join Discord', flag = 'joindiscord', confirm = true, callback = function()
-        local res = request({
+        local res = syn.request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
             Headers = {
@@ -4691,13 +4695,13 @@ function library:CreateSettingsTab(menu)
             Body = game:GetService('HttpService'):JSONEncode({
                 cmd = 'INVITE_BROWSER',
                 nonce = game:GetService('HttpService'):GenerateGUID(false),
-                args = {code = "snipey"}
+                args = {code = getgenv().Config.Invite}
             })
         })
     end})
     
     mainSection:AddButton({text = 'Copy Discord', flag = 'copydiscord', callback = function()
-        setclipboard('https://discord.gg/snipey')
+        setclipboard('https://discord.gg/'..getgenv().Config.Invite)
     end})
 
     mainSection:AddButton({text = 'Rejoin Server', confirm = true, callback = function()

@@ -4492,8 +4492,7 @@ function library:init()
                 {'0ms', true},
             };
             lock = 'custom';
-            position = newUDim2(0, screensize.X / 2 - self.objects.background.Object.Size.X / 2, 0, 15) or
-            newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0);
+            position = newUDim2(library.flags.watermark_x / 100, 0, library.flags.watermark_y / 100, 0);
             refreshrate = 30;
         }
 

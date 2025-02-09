@@ -4508,13 +4508,12 @@ end
 function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('Settings', 999);
     local configSection = settingsTab:AddSection('Config', 2);
-    local statsSection = settingsTab:AddSection('Stats', 1);
     local mainSection = settingsTab:AddSection('Main', 1);
+    local statsSection = settingsTab:AddSection('Stats', 2);
     local creditsSection = settingsTab:AddSection('Credits', 2);
     creditsSection:AddSeparator({text = 'Owner'});
     creditsSection:AddText({text = "m4pty"})
     creditsSection:AddText({text = "snipey.cc"})
-    creditsSection:AddText({text = "discord.gg/snipey"})
     statsSection:AddSeparator({text = 'Information'});
     statsSection:AddText({text = "Expirey - 324234234"})
     statsSection:AddText({text = "Other stuff - 324234234"})
@@ -4620,15 +4619,20 @@ function library:CreateSettingsTab(menu)
         library.keyIndicator:SetPosition(newUDim2(library.flags.keybind_indicator_x / 100, 0, library.flags.keybind_indicator_y / 100, 0));    
     end});
     --]]
-    
+
+    --[[
     mainSection:AddSeparator({text = 'Watermark'})
     mainSection:AddToggle({text = 'Enabled', flag = 'watermark_enabled'});
     mainSection:AddList({text = 'Position', flag = 'watermark_pos', selected = 'Custom', values = {'Top', 'Top Left', 'Top Right', 'Bottom Left', 'Bottom Right', 'Custom'}, callback = function(val)
         library.watermark.lock = val;
     end})
+
     mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', value = 6.1, min = 0, max = 100, increment = .1});
     mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', value = 1.2, min = 0, max = 100, increment = .1});
+    --]]
 
+    library.flags.watermark_enabled = true
+    library.watermark.lock = "Top"
     library:SetTheme(library.themes[1].theme)
 
     --[[

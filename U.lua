@@ -2209,7 +2209,7 @@ function library:init()
                             order = #self.options+1;
                             callback = function() end;
                             keycallback = function() end;
-                            indicatorValue = library.keyIndicator:AddValue({value = 'value', key = 'key', enabled = false});
+                            indicatorValue = library.keyIndicator:AddValue({value = 'value', key = 'key', enabled = true});
                             noindicator = false;
                             invertindicator = false;
                             state = false;
@@ -4490,7 +4490,7 @@ function library:init()
         end
     end)
 
-    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = true});
+    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = false});
     
     self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = true});
     self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
